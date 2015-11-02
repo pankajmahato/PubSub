@@ -22,6 +22,8 @@ public class Bus {
 	 */
 	public boolean addPublisher(Publisher pub) {
 
+		if (pub == null || pub.getPublisher().getType() == null || pub.getPublisher().getType().contains(null))
+			return false;
 		return publishers.add(pub.getPublisher());
 
 	}
@@ -36,6 +38,8 @@ public class Bus {
 	 */
 	public boolean removePublisher(Publisher pub) {
 
+		if (pub == null || pub.getPublisher() == null)
+			return false;
 		return publishers.remove(pub.getPublisher());
 	}
 
@@ -94,6 +98,8 @@ public class Bus {
 	 */
 	public boolean removeSubscriber(Subscriber sub) {
 
+		if (sub == null || sub.getSubscriber() == null)
+			return false;
 		if (subscriberMap.remove(sub.getSubscriber()) != null)
 			return true;
 		else
@@ -143,7 +149,7 @@ public class Bus {
 	 */
 	public boolean publishMessage(Publisher publisherName, Message messageDetails) {
 
-		if (publisherName != null) {
+		if (publisherName != null && messageDetails != null) {
 
 			NewPublisher publisher = publisherName.getPublisher();
 			if (!publishers.contains(publisher)) {

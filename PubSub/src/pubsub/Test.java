@@ -11,8 +11,7 @@ public class Test {
 	public static void main(String[] args) {
 
 		/**
-		 * Creating the <b>Bus</b> object to perform send and receive
-		 * functionalities
+		 * Creating the Bus object to perform send and receive functionalities
 		 */
 		Bus bus = new Bus();
 
@@ -41,6 +40,11 @@ public class Test {
 			System.out.println(publisherTwo.getPublisher().getName() + " added successfully");
 		else
 			System.out.println(publisherTwo.getPublisher().getName() + " was not added");
+		// Null values won't be added
+		if (bus.addPublisher(null))
+			System.out.println("Null publisher added successfully");
+		else
+			System.out.println("Null publisher was not added");
 
 		// Creating two subscribers
 		Subscriber subscrberOne = new NewSubscriber("Subscriber one");
